@@ -1267,7 +1267,7 @@ body.light-theme {
 
 
 .header-actions {
-  display: flex;
+  display: grid;
   align-items: center;
   gap: var(--spacing-xs);
 }
