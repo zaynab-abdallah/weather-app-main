@@ -1,0 +1,30 @@
+{
+  "name": "Weather App",
+  "short_name": "Weather",
+  "description": "Weather app with forecasts, favorites, and location comparison",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a1e",
+  "theme_color": "#1e1b4b",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./assets/images/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["weather", "utilities"],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Search Weather",
+      "short_name": "Search",
+      "description": "Search for weather in a location",
+      "url": "/?action=search",
+      "icons": []
+    }
+  ]
+}
+

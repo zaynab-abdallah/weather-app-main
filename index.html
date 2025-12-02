@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Weather app with forecasts, favorites, and location comparison"
+    />
+    <meta name="theme-color" content="#1e1b4b" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="manifest" href="manifest.json" />
+    <title>Frontend Mentor | Weather app</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+    <!-- Header with Units Dropdown -->
+    <header class="header">
+      <div class="logo">
+        <span class="logo-icon">☀️</span>
+        <span class="logo-text">Weather Now</span>
+      </div>
+      <div class="header-actions">
+        <button class="icon-button" id="themeToggle" aria-label="Toggle theme">
+          <span class="theme-icon">🌙</span>
+        </button>
+        <button
+          class="icon-button"
+          id="favoritesToggle"
+          aria-label="View favorites"
+        >
+          <span class="favorites-icon">⭐</span>
+        </button>
+        <button
+          class="icon-button"
+          id="compareToggle"
+          aria-label="Compare locations"
+        >
+          <span class="compare-icon">⚖</span>
+        </button>
+        <div class="units-dropdown">
+          <button
+            class="units-toggle"
+            aria-label="Toggle units dropdown"
+            aria-expanded="false"
+          >
+            <span>Units</span>
+            <img
+              src="./assets/images/icon-dropdown.svg"
+              alt=""
+              class="dropdown-icon"
+            />
+          </button>
+          <div class="units-menu" role="menu">
+            <div class="units-section">
+              <div class="units-label">Switch to Imperial/Metric</div>
+              <div class="units-toggle-group">
+                <button class="unit-option" data-unit="metric" role="menuitem">
+                  Metric
+                </button>
+                <button
+                  class="unit-option"
+                  data-unit="imperial"
+                  role="menuitem"
+                >
+                  Imperial
+                </button>
+              </div>
+            </div>
+            <div class="units-section">
+              <div class="units-label">Temperature</div>
+              <div class="units-toggle-group">
+                <button
+                  class="unit-option"
+                  data-type="temp"
+                  data-value="celsius"
+                  role="menuitem"
+                >
+                  Celsius (°C)
+                </button>
+                <button
+                  class="unit-option"
+                  data-type="temp"
+                  data-value="fahrenheit"
+                  role="menuitem"
+                >
+                  Fahrenheit (°F)
+                </button>
+              </div>
+            </div>
+            <div class="units-section">
+              <div class="units-label">Wind Speed</div>
+              <div class="units-toggle-group">
+                <button
+                  class="unit-option"
+                  data-type="wind"
+                  data-value="kmh"
+                  role="menuitem"
+                >
+                  km/h
+                </button>
+                <button
+                  class="unit-option"
+                  data-type="wind"
+                  data-value="mph"
+                  role="menuitem"
+                >
+                  mph
+                </button>
+              </div>
+            </div>
+            <div class="units-section">
+              <div class="units-label">Precipitation</div>
+              <div class="units-toggle-group">
+                <button
+                  class="unit-option"
+                  data-type="precip"
+                  data-value="mm"
+                  role="menuitem"
+                >
+                  Millimeters (mm)
+                </button>
+                <button
+                  class="unit-option"
+                  data-type="precip"
+                  data-value="in"
+                  role="menuitem"
+                >
+                  Inches (in)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Search Section -->
+      <section class="search-section">
+        <h1 class="search-title">How's the sky looking today?</h1>
+        <form class="search-form" id="searchForm">
+          <div class="search-input-wrapper">
+            <img
+              src="./assets/images/icon-search.svg"
+              alt="Search"
+              class="search-icon-left"
+            />
+            <input
+              type="text"
+              class="search-input"
+              id="searchInput"
+              placeholder="Search for a place..."
+              aria-label="Search for a city"
+            />
+            <button type="submit" class="search-button" aria-label="Search">
+              Search
+            </button>
+          </div>
+          <div
+            class="error-message"
+            id="errorMessage"
+            role="alert"
+            aria-live="polite"
+          ></div>
+        </form>
+      </section>
+
+      <!-- Loading State -->
+      <div class="loading-state" id="loadingState">
+        <img src="./assets/images/icon-loading.svg" alt="Loading" />
+        <p>Loading weather data...</p>
+      </div>
+
+      <!-- Weather Content -->
+      <div class="weather-content" id="weatherContent">
+        <div class="weather-main-layout">
+          <!-- Left Side: Current Weather and Metrics -->
+          <div class="weather-left">
+            <!-- Current Weather Section -->
+            <section class="current-weather" id="currentWeatherSection">
+              <div class="weather-background-animation"></div>
+              <div class="current-weather-content">
+                <div class="location-info">
+                  <h2 class="location-name" id="locationName">--</h2>
+                  <p class="location-date" id="locationDate">--</p>
+                </div>
+                <div class="temperature-display">
+                  <img
+                    class="weather-icon"
+                    id="weatherIcon"
+                    src=""
+                    alt="Weather condition"
+                  />
+                  <div class="temperature-wrapper">
+                    <span class="temperature" id="temperature">--</span>
+                    <span class="temperature-unit" id="temperatureUnit">°</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Weather Metrics -->
+            <section class="weather-metrics">
+              <div class="metric-card">
+                <div class="metric-label">Feels like</div>
+                <div class="metric-value">
+                  <span id="feelsLike">--</span>
+                  <span class="temperature-unit" id="feelsLikeUnit">°</span>
+                </div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-label">Humidity</div>
+                <div class="metric-value"><span id="humidity">--</span>%</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-label">Wind</div>
+                <div class="metric-value">
+                  <span id="windSpeed">--</span>
+                  <span id="windUnit">km/h</span>
+                </div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-label">Precipitation</div>
+                <div class="metric-value">
+                  <span id="precipitation">--</span>
+                  <span id="precipUnit">mm</span>
+                </div>
+              </div>
+            </section>
+
+            <!-- Daily Forecast -->
+            <section class="daily-forecast">
+              <h2 class="section-title">Daily forecast</h2>
+              <div class="forecast-list" id="dailyForecast"></div>
+            </section>
+          </div>
+
+          <!-- Right Side: Hourly Forecast Only -->
+          <div class="weather-right">
+            <!-- Hourly Forecast -->
+            <section class="hourly-forecast">
+              <div class="hourly-header">
+                <h2 class="section-title">Hourly forecast</h2>
+                <div class="day-selector" id="daySelector"></div>
+              </div>
+              <div class="hourly-list" id="hourlyForecast"></div>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <!-- Favorites Panel -->
+      <aside class="favorites-panel" id="favoritesPanel">
+        <div class="panel-header">
+          <h2>Favorites</h2>
+          <button
+            class="close-panel"
+            id="closeFavoritesPanel"
+            aria-label="Close favorites"
+          >
+            ×
+          </button>
+        </div>
+        <div class="favorites-list" id="favoritesList"></div>
+      </aside>
+
+      <!-- Compare Locations Panel -->
+      <aside class="compare-panel" id="comparePanel">
+        <div class="panel-header">
+          <h2>Compare Locations</h2>
+          <button
+            class="close-panel"
+            id="closeComparePanel"
+            aria-label="Close compare"
+          >
+            ×
+          </button>
+        </div>
+        <div class="compare-content" id="compareContent">
+          <div class="compare-inputs">
+            <input
+              type="text"
+              class="compare-input"
+              id="compareInput1"
+              placeholder="Location 1"
+            />
+            <input
+              type="text"
+              class="compare-input"
+              id="compareInput2"
+              placeholder="Location 2"
+            />
+            <button class="compare-button" id="compareButton">Compare</button>
+          </div>
+          <div class="compare-results" id="compareResults"></div>
+        </div>
+      </aside>
+
+      <!-- FAQs Section -->
+      <section class="faqs-section" id="faqsSection">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faqs-list" id="faqsList">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              How does the weather app detect my location?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              The app uses your browser's Geolocation API to detect your current
+              location. You'll be prompted to allow location access on your
+              first visit. If you deny access, the app will use your IP address
+              to estimate your location or default to New York.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              How do I save favorite locations?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              After searching for a location, click the "Add to Favorites"
+              button that appears. You can then access your saved locations by
+              clicking the favorites icon (⭐) in the header. Favorites are
+              saved locally in your browser.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Can I compare weather between two locations?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              Yes! Click the compare icon (⚖) in the header, enter two
+              locations, and click "Compare" to see side-by-side weather data
+              including temperature, conditions, and forecasts.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              How does voice search work?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              Click the microphone icon (🎤) next to the search bar and speak
+              the name of the city you want to search for. Make sure your
+              browser supports the Web Speech API and allow microphone access
+              when prompted.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              What weather data is available?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              The app displays current temperature, feels-like temperature,
+              humidity, wind speed, precipitation, UV index, visibility, air
+              pressure, sunrise/sunset times, 7-day daily forecasts, and hourly
+              forecasts for each day.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Can I install this app on my phone?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              Yes! This is a Progressive Web App (PWA). On mobile devices, you
+              can install it from your browser's menu. On desktop, look for the
+              install prompt in your browser's address bar.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Your Name Here</a>.
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+      // Register Service Worker for PWA
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("/sw.js")
+            .then((registration) => {
+              console.log("Service Worker registered:", registration);
+            })
+            .catch((error) => {
+              console.log("Service Worker registration failed:", error);
+            });
+        });
+      }
+    </script>
+  </body>
+</html>
