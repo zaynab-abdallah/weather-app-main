@@ -171,7 +171,7 @@ body {
   padding: var(--spacing-xs) var(--spacing-sm);
   color: var(--neutral-0);
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: 0;
   cursor: pointer;
   transition: all var(--transition);
   box-shadow: var(--shadow-sm);
@@ -1290,6 +1290,7 @@ body.light-theme {
   box-shadow: var(--shadow-md);
   position: relative;
   overflow: hidden;
+          width: 65px;
 }
 
 .icon-button::before {
