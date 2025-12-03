@@ -803,15 +803,14 @@ body {
 
 .forecast-list {
   display: flex;
-  flex-direction: column;
+  
   gap: var(--spacing-sm);
   position: relative;
   z-index: 1;
 }
 
 .forecast-item {
-  display: flex;
-  align-items: center;
+ 
   justify-content: space-between;
   gap: var(--spacing-md);
   background: linear-gradient(90deg, var(--neutral-750) 0%, var(--neutral-700) 100%);
@@ -820,6 +819,7 @@ body {
   padding: var(--spacing-md);
   transition: all var(--transition-bounce);
   box-shadow: var(--shadow-sm);
+      min-width: 62px;
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -857,8 +857,7 @@ body {
 
 .forecast-icon-wrapper {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  
 }
 
 .forecast-icon {
@@ -873,7 +872,7 @@ body {
   gap: var(--spacing-md);
   font-weight: 600;
   font-size: 1rem;
-  min-width: 80px;
+  
   justify-content: flex-end;
 }
 
