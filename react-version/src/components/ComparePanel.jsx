@@ -1,25 +1,11 @@
-'use client'
-
 import { useState } from 'react'
-import { Units } from '@/types'
-import { searchWeather } from '@/lib/weatherApi'
-import { 
-  convertTemperature, 
-  convertWindSpeed,
-  getTemperatureUnit,
-  getWindUnit
-} from '@/lib/utils'
+import { searchWeather } from '../utils/weatherApi'
+import { convertTemperature, convertWindSpeed, getTemperatureUnit, getWindUnit } from '../utils/helpers'
 
-interface ComparePanelProps {
-  isOpen: boolean
-  onClose: () => void
-  units: Units
-}
-
-export default function ComparePanel({ isOpen, onClose, units }: ComparePanelProps) {
+export default function ComparePanel({ isOpen, onClose, units }) {
   const [location1, setLocation1] = useState('')
   const [location2, setLocation2] = useState('')
-  const [compareData, setCompareData] = useState<any>(null)
+  const [compareData, setCompareData] = useState(null)
   const [loading, setLoading] = useState(false)
 
   const handleCompare = async () => {
@@ -48,9 +34,7 @@ export default function ComparePanel({ isOpen, onClose, units }: ComparePanelPro
       <aside className={`compare-panel ${isOpen ? 'active' : ''}`}>
         <div className="panel-header">
           <h2>Compare Locations</h2>
-          <button className="close-panel" onClick={onClose} aria-label="Close compare">
-            ×
-          </button>
+          <button className="close-panel" onClick={onClose}>×</button>
         </div>
         <div className="compare-content">
           <div className="compare-inputs">
@@ -68,9 +52,7 @@ export default function ComparePanel({ isOpen, onClose, units }: ComparePanelPro
               onChange={(e) => setLocation2(e.target.value)}
               placeholder="Location 2"
             />
-            <button className="compare-button" onClick={handleCompare}>
-              Compare
-            </button>
+            <button className="compare-button" onClick={handleCompare}>Compare</button>
           </div>
           {loading && <p style={{ textAlign: 'center' }}>Loading...</p>}
           {compareData && (

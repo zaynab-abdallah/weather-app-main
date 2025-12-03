@@ -34,20 +34,22 @@ export default function SearchSection({
     <section className="search-section">
       <h1 className="search-title">How&apos;s the sky looking today?</h1>
       <form className="search-form" onSubmit={handleSubmit}>
-        <div className="search-input-wrapper">
-          <img
-            src="/assets/images/icon-search.svg"
-            alt="Search"
-            className="search-icon-left"
-          />
-          <input
-            type="text"
-            className="search-input"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search for a place..."
-            aria-label="Search for a city"
-          />
+        <div className="search-wrapper">
+          <div className="search-input-wrapper">
+            <img
+              src="/assets/images/icon-search.svg"
+              alt="Search"
+              className="search-icon-left"
+            />
+            <input
+              type="text"
+              className="search-input"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search for a place..."
+              aria-label="Search for a city"
+            />
+          </div>
           <button type="submit" className="search-button" aria-label="Search">
             Search
           </button>

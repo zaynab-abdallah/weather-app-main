@@ -51,8 +51,3 @@ export interface WeatherData {
   daily: DailyWeather
 }
 
-export interface CompareWeatherData {
-  location: Location
-  weather: CurrentWeather
-}
-

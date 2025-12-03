@@ -1,26 +1,9 @@
-'use client'
-
-import { WeatherData, Location, Units } from '@/types'
 import CurrentWeather from './CurrentWeather'
 import WeatherMetrics from './WeatherMetrics'
 import DailyForecast from './DailyForecast'
 import HourlyForecast from './HourlyForecast'
 
-interface WeatherContentProps {
-  weatherData: WeatherData
-  location: Location
-  selectedDayIndex: number
-  onDaySelect: (index: number) => void
-  units: Units
-}
-
-export default function WeatherContent({
-  weatherData,
-  location,
-  selectedDayIndex,
-  onDaySelect,
-  units
-}: WeatherContentProps) {
+export default function WeatherContent({ weatherData, location, selectedDayIndex, onDaySelect, units }) {
   return (
     <div className="weather-content active">
       <div className="weather-main-layout">
@@ -31,14 +14,8 @@ export default function WeatherContent({
             location={location}
             units={units}
           />
-          <WeatherMetrics
-            current={weatherData.current}
-            units={units}
-          />
-          <DailyForecast
-            daily={weatherData.daily}
-            units={units}
-          />
+          <WeatherMetrics current={weatherData.current} units={units} />
+          <DailyForecast daily={weatherData.daily} units={units} />
         </div>
 
         <div className="weather-right">

@@ -1160,14 +1160,24 @@ function renderCompareResults(weather1, weather2) {
 
 // FAQs Setup
 function setupFAQs() {
-  if (!elements.faqsList || elements.faqsList.length === 0) return;
+  const faqQuestions = document.querySelectorAll('.faq-question')
+  if (!faqQuestions || faqQuestions.length === 0) return
   
-  elements.faqsList.forEach(question => {
+  faqQuestions.forEach(question => {
     question.addEventListener('click', () => {
-      const isExpanded = question.getAttribute('aria-expanded') === 'true';
-      question.setAttribute('aria-expanded', !isExpanded);
-    });
-  });
+      const isExpanded = question.getAttribute('aria-expanded') === 'true'
+      
+      // Close all other FAQs
+      faqQuestions.forEach(q => {
+        if (q !== question) {
+          q.setAttribute('aria-expanded', 'false')
+        }
+      })
+      
+      // Toggle current FAQ
+      question.setAttribute('aria-expanded', !isExpanded)
+    })
+  })
 }
 
 // Initialize app when DOM is ready

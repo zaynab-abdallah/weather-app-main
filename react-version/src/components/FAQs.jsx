@@ -1,5 +1,3 @@
-'use client'
-
 import { useState } from 'react'
 
 const faqs = [
@@ -9,7 +7,7 @@ const faqs = [
   },
   {
     question: 'How do I save favorite locations?',
-    answer: 'After searching for a location, you can add it to favorites.'
+    answer: 'After searching for a location, you can add it to favorites by clicking the star icon.'
   },
   {
     question: 'Can I compare weather between two locations?',
@@ -22,7 +20,7 @@ const faqs = [
 ]
 
 export default function FAQs() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const [openIndex, setOpenIndex] = useState(null)
 
   return (
     <section className="faqs-section">

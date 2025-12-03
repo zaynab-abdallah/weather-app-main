@@ -1,23 +1,4 @@
-'use client'
-
-import { Location, Units } from '@/types'
-
-interface FavoritesPanelProps {
-  isOpen: boolean
-  onClose: () => void
-  favorites: Location[]
-  onLoadFavorite: (name: string) => void
-  onRemoveFavorite: (location: Location) => void
-  units: Units
-}
-
-export default function FavoritesPanel({
-  isOpen,
-  onClose,
-  favorites,
-  onLoadFavorite,
-  onRemoveFavorite
-}: FavoritesPanelProps) {
+export default function FavoritesPanel({ isOpen, onClose, favorites, onLoadFavorite, onRemoveFavorite }) {
   return (
     <>
       {isOpen && <div className="panel-overlay active" onClick={onClose}></div>}
@@ -45,21 +26,8 @@ export default function FavoritesPanel({
                   </div>
                 </div>
                 <div className="favorite-item-actions">
-                  <button 
-                    onClick={() => {
-                      onLoadFavorite(fav.name)
-                      onClose()
-                    }}
-                    aria-label={`Load ${fav.name}`}
-                  >
-                    📍
-                  </button>
-                  <button 
-                    onClick={() => onRemoveFavorite(fav)}
-                    aria-label={`Remove ${fav.name}`}
-                  >
-                    🗑️
-                  </button>
+                  <button onClick={() => { onLoadFavorite(fav.name); onClose() }}>📍</button>
+                  <button onClick={() => onRemoveFavorite(fav)}>🗑️</button>
                 </div>
               </div>
             ))

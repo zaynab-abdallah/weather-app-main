@@ -1,24 +1,10 @@
-'use client'
+import { convertTemperature, weatherIcons, formatHour } from '../utils/helpers'
 
-import { HourlyWeather, Units } from '@/types'
-import { convertTemperature, weatherIcons, formatHour } from '@/lib/utils'
-
-interface HourlyForecastProps {
-  hourly: HourlyWeather
-  selectedDayIndex: number
-  onDaySelect: (index: number) => void
-  units: Units
-}
-
-export default function HourlyForecast({
-  hourly,
-  selectedDayIndex,
-  onDaySelect,
-  units
-}: HourlyForecastProps) {
+export default function HourlyForecast({ hourly, selectedDayIndex, onDaySelect, units }) {
   const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
   const today = new Date()
   
+  // Calculate hourly data
   const now = new Date()
   const currentHour = now.getHours()
   

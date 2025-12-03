@@ -1,10 +1,9 @@
-import { Location, WeatherData } from '@/types'
-
 const GEOCODING_API = 'https://geocoding-api.open-meteo.com/v1/search'
 const WEATHER_API = 'https://api.open-meteo.com/v1/forecast'
 
-export async function searchWeather(query: string): Promise<WeatherData | null> {
+export async function searchWeather(query) {
   try {
+    // Get coordinates
     const geocodeUrl = `${GEOCODING_API}?name=${encodeURIComponent(query)}&count=1&language=en&format=json`
     const geocodeResponse = await fetch(geocodeUrl)
     const geocodeData = await geocodeResponse.json()
@@ -14,7 +13,7 @@ export async function searchWeather(query: string): Promise<WeatherData | null> 
     }
     
     const location = geocodeData.results[0]
-    const locationData: Location = {
+    const locationData = {
       name: location.name,
       country: location.country,
       latitude: location.latitude,
@@ -22,9 +21,10 @@ export async function searchWeather(query: string): Promise<WeatherData | null> 
       timezone: location.timezone || 'auto'
     }
     
+    // Fetch weather
     const params = new URLSearchParams({
-      latitude: location.latitude.toString(),
-      longitude: location.longitude.toString(),
+      latitude: location.latitude,
+      longitude: location.longitude,
       timezone: locationData.timezone,
       current: 'temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m,precipitation',
       hourly: 'temperature_2m,weather_code,precipitation',
@@ -36,7 +36,7 @@ export async function searchWeather(query: string): Promise<WeatherData | null> 
     const weatherResponse = await fetch(weatherUrl)
     
     if (!weatherResponse.ok) {
-      throw new Error('Weather API request failed')
+      throw new Error('Weather API failed')
     }
     
     const weatherData = await weatherResponse.json()
@@ -51,9 +51,5 @@ export async function searchWeather(query: string): Promise<WeatherData | null> 
     console.error('Search error:', error)
     return null
   }
-}
-
-export async function getUserLocation(): Promise<Location | null> {
-  return null
 }
 
