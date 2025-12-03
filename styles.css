@@ -171,7 +171,7 @@ body {
   padding: var(--spacing-xs) var(--spacing-sm);
   color: var(--neutral-0);
   font-family: var(--font-body);
-  font-size: 0;
+  font-size: 3px;
   cursor: pointer;
   transition: all var(--transition);
   box-shadow: var(--shadow-sm);
@@ -1825,7 +1825,7 @@ body.light-theme {
 
   .icon-button {
     padding: 0.5rem;
-            height: 136px;
+            height: 45px;
         display: grid;
   }
 
