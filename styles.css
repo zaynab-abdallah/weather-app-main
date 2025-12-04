@@ -916,6 +916,7 @@ body {
   gap: var(--spacing-xs);
   overflow-x: auto;
   padding-bottom: var(--spacing-xs);
+  padding-top: var(--spacing-xs);
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -954,7 +955,7 @@ body {
   border-color: var(--purple-500);
   font-weight: 600;
   margin-left: 10px;
-  padding-top: var(--spacing-xs);
+  
   box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
   transform: scale(1.05);
 }
