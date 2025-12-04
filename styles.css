@@ -953,6 +953,7 @@ body {
   background: linear-gradient(135deg, var(--blue-500) 0%, var(--purple-500) 100%);
   border-color: var(--purple-500);
   font-weight: 600;
+  margin-left: 10px;
   box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
   transform: scale(1.05);
 }
@@ -967,7 +968,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-sm);
-  max-height: 800px;
+  max-height: 810px;
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -1652,6 +1653,7 @@ body.light-theme .hourly-forecast {
   .daily-forecast,
   .hourly-forecast {
     padding: var(--spacing-md);
+        overflow: hidden;
   }
   
   .section-title {
