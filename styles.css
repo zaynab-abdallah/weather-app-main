@@ -170,7 +170,7 @@ body {
   padding: var(--spacing-xs) var(--spacing-sm);
   color: var(--neutral-0);
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: 3px;
   cursor: pointer;
   transition: all var(--transition);
   box-shadow: var(--shadow-sm);
@@ -847,6 +847,7 @@ body {
   flex-shrink: 0;
   transition: all var(--transition-bounce);
   box-shadow: var(--shadow-sm);
+      min-width: 62px;
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -868,8 +869,7 @@ body {
 
 .forecast-icon-wrapper {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  
 }
 
 .forecast-icon {
@@ -1108,7 +1108,7 @@ body.light-theme .hourly-forecast {
 
 /* Header Actions */
 .header-actions {
-  display: flex;
+  display: grid;
   align-items: center;
   gap: var(--spacing-xs);
 }
@@ -1130,6 +1130,7 @@ body.light-theme .hourly-forecast {
   box-shadow: var(--shadow-md);
   position: relative;
   overflow: hidden;
+          width: 65px;
 }
 
 .icon-button::before {
