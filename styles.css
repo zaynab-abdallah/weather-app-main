@@ -898,16 +898,7 @@ body {
   position: relative;
 }
 
-.hourly-forecast::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--blue-500), var(--purple-500), var(--pink-500));
-  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-}
+
 
 .hourly-header {
   display: flex;
@@ -1002,17 +993,7 @@ body {
   overflow: hidden;
 }
 
-.hourly-item::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: linear-gradient(180deg, var(--cyan-500), var(--blue-500));
-  opacity: 0;
-  transition: opacity var(--transition);
-}
+
 
 .hourly-item:hover::before {
   opacity: 1;
