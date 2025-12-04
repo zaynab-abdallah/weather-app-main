@@ -795,16 +795,7 @@ body {
   width: 100%;
 }
 
-.daily-forecast::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
-  animation: rotate 20s linear infinite;
-}
+
 
 @keyframes rotate {
   from { transform: rotate(0deg); }
