@@ -63,8 +63,7 @@ const elements = {
   compareInput2: document.getElementById('compareInput2'),
   compareButton: document.getElementById('compareButton'),
   compareResults: document.getElementById('compareResults'),
-  closeComparePanel: document.getElementById('closeComparePanel'),
-  faqsList: document.querySelectorAll('.faq-question')
+  closeComparePanel: document.getElementById('closeComparePanel')
 };
 
 // Weather Code to Icon Mapping
@@ -107,7 +106,6 @@ function init() {
   updateUnitButtons();
   initializeTheme();
   initializeVoiceRecognition();
-  setupFAQs();
   // Load default city weather
   setTimeout(() => {
     searchWeather('London');
@@ -1156,28 +1154,6 @@ function renderCompareResults(weather1, weather2) {
       </div>
     </div>
   `;
-}
-
-// FAQs Setup
-function setupFAQs() {
-  const faqQuestions = document.querySelectorAll('.faq-question')
-  if (!faqQuestions || faqQuestions.length === 0) return
-  
-  faqQuestions.forEach(question => {
-    question.addEventListener('click', () => {
-      const isExpanded = question.getAttribute('aria-expanded') === 'true'
-      
-      // Close all other FAQs
-      faqQuestions.forEach(q => {
-        if (q !== question) {
-          q.setAttribute('aria-expanded', 'false')
-        }
-      })
-      
-      // Toggle current FAQ
-      question.setAttribute('aria-expanded', !isExpanded)
-    })
-  })
 }
 
 // Initialize app when DOM is ready
