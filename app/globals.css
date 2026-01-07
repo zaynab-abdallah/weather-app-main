@@ -778,7 +778,7 @@ body {
   font-family: var(--font-heading);
   font-size: 1.25rem;
   font-weight: 700;
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
   color: var(--neutral-0);
 }
 
@@ -787,7 +787,7 @@ body {
   background: linear-gradient(135deg, var(--neutral-800) 0%, var(--neutral-750) 100%);
   border: 1px solid var(--neutral-600);
   border-radius: var(--radius-xl);
-  padding: var(--spacing-md);
+  padding: var(--spacing-sm);
   box-shadow: var(--shadow-lg);
   backdrop-filter: blur(20px);
   position: relative;
@@ -803,7 +803,7 @@ body {
 }
 
 .daily-forecast .section-title {
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
   position: relative;
   z-index: 1;
 }
@@ -811,11 +811,13 @@ body {
 .forecast-list {
   display: flex;
   flex-direction: row;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-md);
   position: relative;
   z-index: 1;
   overflow-x: auto;
-  padding-bottom: var(--spacing-xs);
+  padding-top: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
+  padding-left: var(--spacing-md);
   scrollbar-width: none;
   
 }
@@ -917,7 +919,7 @@ body {
   display: flex;
   gap: var(--spacing-xs);
   overflow-x: auto;
-  padding-bottom: var(--spacing-xs);
+  padding: var(--spacing-xs);
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -973,7 +975,7 @@ body {
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  padding-right: var(--spacing-xs);
+  padding: var(--spacing-sm);
 }
 
 .hourly-list::-webkit-scrollbar {
@@ -1058,15 +1060,15 @@ body.light-theme {
   --neutral-300: hsl(220, 10%, 45%);
   --neutral-200: hsl(220, 8%, 30%);
   --neutral-0: hsl(220, 15%, 15%);
-  background: linear-gradient(135deg, hsl(220, 20%, 94%) 0%, hsl(220, 25%, 90%) 100%);
+  background: linear-gradient(135deg, hsl(220, 69%, 90%) 0%, hsl(221, 53%, 88%) 100%);
   color: var(--neutral-0);
 }
 
 body.light-theme .current-weather {
   background: linear-gradient(135deg, 
-    rgba(59, 130, 246, 0.15) 0%, 
-    rgba(139, 92, 246, 0.12) 50%,
-    rgba(236, 72, 153, 0.1) 100%);
+    rgba(124, 171, 247, 0.15) 0%, 
+    rgba(99, 37, 243, 0.12) 50%,
+    rgba(247, 38, 142, 0.1) 100%);
   border: 1px solid rgba(59, 130, 246, 0.2);
 }
 
@@ -1075,7 +1077,10 @@ body.light-theme .forecast-item,
 body.light-theme .hourly-item,
 body.light-theme .daily-forecast,
 body.light-theme .hourly-forecast {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+  background: linear-gradient(135deg, 
+    rgba(124, 170, 245, 0.8) 0%, 
+    rgba(187, 163, 245, 0.7) 50%,
+    rgba(253, 163, 208, 0.6) 100%);
   border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
@@ -1512,17 +1517,15 @@ body.light-theme .hourly-forecast {
 .faq-answer {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease;
   padding: 0 var(--spacing-md);
+  transition: max-height 0.3s ease, padding 0.3s ease;
 }
 
-.faq-answer.active,
 .faq-question[aria-expanded="true"] + .faq-answer {
   max-height: 500px;
   padding: 0 var(--spacing-md) var(--spacing-md);
-  color: var(--neutral-300);
-  line-height: 1.6;
 }
+
 
 .panel-overlay {
   position: fixed;
@@ -1601,6 +1604,11 @@ body.light-theme .hourly-forecast {
   
   .hourly-list::-webkit-scrollbar {
     display: none;
+  }
+
+  .forecast-item {
+    min-width: 106px;
+    padding: var(--spacing-md);
   }
 }
 

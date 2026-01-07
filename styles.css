@@ -971,7 +971,7 @@ body {
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  padding-right: var(--spacing-xs);
+  padding: var(--spacing-sm);
 }
 
 .hourly-list::-webkit-scrollbar {
