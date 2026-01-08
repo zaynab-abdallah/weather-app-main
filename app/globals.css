@@ -1087,7 +1087,7 @@ body.light-theme .hourly-forecast {
 
 /* Header Actions */
 .header-actions {
-  display: flex;
+  display: grid;
   align-items: center;
   gap: var(--spacing-xs);
 }
@@ -1740,6 +1740,10 @@ body.light-theme .hourly-forecast {
 }
 
 @media (min-width: 1024px) {
+  .header-actions {
+    display: flex;
+  }
+
   .current-weather {
     padding: var(--spacing-xl) var(--spacing-xl);
   }
