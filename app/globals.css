@@ -115,6 +115,10 @@ body {
   position: relative;
 }
 
+ .header-actions {
+    gap: 0.25rem;
+    display:flex;
+  }
 .header::after {
   content: '';
   position: absolute;
