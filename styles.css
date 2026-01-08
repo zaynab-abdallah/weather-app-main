@@ -124,6 +124,10 @@ body {
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--neutral-700), transparent);
 }
+ .header-actions {
+    gap: 0.25rem;
+    display:flex;
+  }
 
 .logo {
   display: flex;
